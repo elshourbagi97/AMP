@@ -66,8 +66,8 @@ main { max-width: 650px; margin: auto; }
   color: #fff;
   flex-shrink: 0;
 }
-h1 { font-size: 18px; font-weight: 800; margin: 0 0 2px; color: #fff; letter-spacing: -0.3px; }
-.top p { margin: 0; color: #bfdbfe; font-size: 12px; font-weight: 500; }
+h1 { font-size: clamp(16px, 4vw, 18px); font-weight: 800; margin: 0 0 2px; color: #fff; letter-spacing: -0.3px; }
+.top p { margin: 0; color: #bfdbfe; font-size: 11px; font-weight: 500; }
 
 /* Panel & Cards */
 .panel { 
@@ -79,7 +79,7 @@ h1 { font-size: 18px; font-weight: 800; margin: 0 0 2px; color: #fff; letter-spa
   margin-bottom: 14px; 
 }
 h2 { 
-  font-size: 14px; 
+  font-size: 13px; 
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -92,14 +92,14 @@ h2 {
   gap: 8px;
 }
 
-/* Form Controls - Strictly 2 columns layout */
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+/* Form Controls - Responsive 2 Columns Grid */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 label { font-weight: 600; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 input, select { 
   width: 100%; 
-  padding: 10px 8px; 
+  padding: 10px 6px; 
   border: 1px solid var(--input-border); 
   border-radius: 10px; 
   background: var(--input-bg); 
@@ -116,22 +116,30 @@ input:focus, select:focus {
   background: #ffffff; 
 }
 
-.fuel-work-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+/* 3 Inputs Row (Fuel & Work Time) */
+.fuel-work-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
 .fuel-work-row label { font-size: 10px; text-align: center; }
 
-.coord-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 8px; }
+/* Coordinates Row (4 Inputs) */
+.coord-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-bottom: 8px; }
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 380px) {
+  .grid { grid-template-columns: 1fr; }
+  .coord-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+}
 
 /* Results Section */
-.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.results-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
 .result-card { 
   background: var(--result-card-bg); 
   border: 1px solid var(--card-border); 
   border-radius: 12px; 
-  padding: 12px; 
+  padding: 12px 6px; 
   text-align: center; 
 }
 .result-card small { display: block; color: var(--text-muted); font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-.result-card strong { font-size: 18px; font-weight: 800; color: var(--primary); }
+.result-card strong { font-size: clamp(15px, 4vw, 18px); font-weight: 800; color: var(--primary); }
 
 .flight-summary { 
   background: var(--summary-bg); 
@@ -229,7 +237,7 @@ input:focus, select:focus {
     </div>
     <div class="field">
       <label for="weightFuelLitres">Fuel (L) / الوقود</label>
-      <input id="weightFuelLitres" type="number" placeholder="Total fuel">
+      <input id="weightFuelLitres" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Total fuel">
     </div>
     <div class="field">
       <label for="extra">Additional Item / حمولة إضافية</label>
@@ -285,15 +293,15 @@ input:focus, select:focus {
     <label style="margin-bottom:4px; display:block;">MANUAL STARTING POINT (POINT A)</label>
     <div class="coord-row">
       <div class="field"><label>Dir</label><select id="startLatHem"><option>N</option><option>S</option></select></div>
-      <div class="field"><label>Lat (°)</label><input id="startLatDeg" type="number" placeholder="Deg"></div>
-      <div class="field"><label>Min (′)</label><input id="startLatMin" type="number" placeholder="Min"></div>
-      <div class="field"><label>Sec (″)</label><input id="startLatSec" type="number" placeholder="Sec"></div>
+      <div class="field"><label>Lat (°)</label><input id="startLatDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
+      <div class="field"><label>Min (′)</label><input id="startLatMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
+      <div class="field"><label>Sec (″)</label><input id="startLatSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
     </div>
     <div class="coord-row">
       <div class="field"><label>Dir</label><select id="startLonHem"><option>E</option><option>W</option></select></div>
-      <div class="field"><label>Lon (°)</label><input id="startLonDeg" type="number" placeholder="Deg"></div>
-      <div class="field"><label>Min (′)</label><input id="startLonMin" type="number" placeholder="Min"></div>
-      <div class="field"><label>Sec (″)</label><input id="startLonSec" type="number" placeholder="Sec"></div>
+      <div class="field"><label>Lon (°)</label><input id="startLonDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
+      <div class="field"><label>Min (′)</label><input id="startLonMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
+      <div class="field"><label>Sec (″)</label><input id="startLonSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
     </div>
   </div>
 
@@ -301,15 +309,15 @@ input:focus, select:focus {
   <label style="margin-bottom:4px; display:block;">DESTINATION POINT (POINT B)</label>
   <div class="coord-row">
     <div class="field"><label>Dir</label><select id="targetLatHem"><option>N</option><option>S</option></select></div>
-    <div class="field"><label>Lat (°)</label><input id="targetLatDeg" type="number" placeholder="Deg"></div>
-    <div class="field"><label>Min (′)</label><input id="targetLatMin" type="number" placeholder="Min"></div>
-    <div class="field"><label>Sec (″)</label><input id="targetLatSec" type="number" placeholder="Sec"></div>
+    <div class="field"><label>Lat (°)</label><input id="targetLatDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
+    <div class="field"><label>Min (′)</label><input id="targetLatMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
+    <div class="field"><label>Sec (″)</label><input id="targetLatSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
   </div>
   <div class="coord-row">
     <div class="field"><label>Dir</label><select id="targetLonHem"><option>E</option><option>W</option></select></div>
-    <div class="field"><label>Lon (°)</label><input id="targetLonDeg" type="number" placeholder="Deg"></div>
-    <div class="field"><label>Min (′)</label><input id="targetLonMin" type="number" placeholder="Min"></div>
-    <div class="field"><label>Sec (″)</label><input id="targetLonSec" type="number" placeholder="Sec"></div>
+    <div class="field"><label>Lon (°)</label><input id="targetLonDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
+    <div class="field"><label>Min (′)</label><input id="targetLonMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
+    <div class="field"><label>Sec (″)</label><input id="targetLonSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
   </div>
 
   <div style="margin: 10px 0;">
@@ -324,15 +332,15 @@ input:focus, select:focus {
     <div class="fuel-work-row">
       <div class="field">
         <label for="totalFuel">Avail. Fuel</label>
-        <input id="totalFuel" type="number" placeholder="Total fuel">
+        <input id="totalFuel" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Total fuel">
       </div>
       <div class="field">
         <label for="remainingFuel">Reserve Fuel</label>
-        <input id="remainingFuel" type="number" placeholder="0">
+        <input id="remainingFuel" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="0">
       </div>
       <div class="field">
         <label for="workTime">Work Time</label>
-        <input id="workTime" type="number" placeholder="0">
+        <input id="workTime" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="0">
       </div>
     </div>
   </div>
@@ -615,6 +623,15 @@ $("resetNav").onclick = () => {
 };
 
 $("calculateFlight").onclick = calcFlight;
+
+// Restrict non-numeric inputs via JS as backup
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener('keydown', (e) => {
+    if (['e', 'E', '+', '-'].includes(e.key)) {
+      e.preventDefault();
+    }
+  });
+});
 
 // Register Service Worker for Offline Support
 if ("serviceWorker" in navigator) {
