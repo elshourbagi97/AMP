@@ -37,7 +37,7 @@ body {
   margin: 0; 
   background: var(--bg); 
   color: var(--text-main); 
-  padding: 12px 12px 80px 12px; 
+  padding: 12px 12px 110px 12px; 
   min-height: 100vh;
 }
 main { max-width: 650px; margin: auto; }
@@ -47,17 +47,17 @@ main { max-width: 650px; margin: auto; }
   background: linear-gradient(135deg, #1e40af, #2563eb); 
   border: 1px solid var(--primary);
   color: white; 
-  padding: 16px; 
+  padding: 14px 16px; 
   border-radius: 16px; 
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.18);
   display: flex;
   align-items: center;
   gap: 12px;
 }
 .top-icon {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   display: flex;
@@ -66,7 +66,7 @@ main { max-width: 650px; margin: auto; }
   color: #fff;
   flex-shrink: 0;
 }
-h1 { font-size: clamp(16px, 4vw, 18px); font-weight: 800; margin: 0 0 2px; color: #fff; letter-spacing: -0.3px; }
+h1 { font-size: clamp(15px, 4vw, 17px); font-weight: 800; margin: 0 0 2px; color: #fff; letter-spacing: -0.3px; }
 .top p { margin: 0; color: #bfdbfe; font-size: 11px; font-weight: 500; }
 
 /* Panel & Cards */
@@ -92,14 +92,16 @@ h2 {
   gap: 8px;
 }
 
-/* Form Controls - Responsive 2 Columns Grid */
+/* Grid & Inputs Layout */
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 label { font-weight: 600; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-input, select { 
+/* Uniform Input & Select Height & Appearance */
+input[type="text"], input[type="number"], select { 
   width: 100%; 
-  padding: 10px 6px; 
+  height: 44px;
+  padding: 0 10px; 
   border: 1px solid var(--input-border); 
   border-radius: 10px; 
   background: var(--input-bg); 
@@ -108,12 +110,22 @@ input, select {
   font-weight: 700; 
   text-align: center;
   transition: all 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 input:focus, select:focus { 
   outline: none; 
   border-color: var(--primary); 
   box-shadow: 0 0 0 3px var(--primary-glow); 
   background: #ffffff; 
+}
+
+/* Custom dropdown icon for select elements */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%252364748b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 24px;
 }
 
 /* 3 Inputs Row (Fuel & Work Time) */
@@ -123,7 +135,6 @@ input:focus, select:focus {
 /* Coordinates Row (4 Inputs) */
 .coord-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-bottom: 8px; }
 
-/* Responsive tweaks for smaller screens */
 @media (max-width: 380px) {
   .grid { grid-template-columns: 1fr; }
   .coord-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
@@ -153,16 +164,25 @@ input:focus, select:focus {
 .summary-row span { color: #94a3b8; font-weight: 600; }
 .summary-row strong { color: #38bdf8; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
 
-.unit-select { width: auto !important; padding: 2px 6px !important; font-size: 11px !important; background: #1e293b !important; color: #38bdf8 !important; border: 1px solid #334155 !important; border-radius: 6px !important; height: 26px; }
+.unit-select { 
+  width: auto !important; 
+  height: 28px !important;
+  padding: 2px 20px 2px 6px !important; 
+  font-size: 11px !important; 
+  background-color: #1e293b !important; 
+  color: #38bdf8 !important; 
+  border: 1px solid #334155 !important; 
+  border-radius: 6px !important; 
+}
 
 .status-bad { color: #f87171 !important; font-weight: 800; }
 .status-good { color: #34d399 !important; font-weight: 800; }
 
 /* Action Buttons */
 .action-buttons { display: flex; gap: 8px; margin-top: 14px; }
-.btn-calc { flex: 2; padding: 12px; font-size: 14px; font-weight: 700; border: none; border-radius: 10px; background: var(--green); color: white; cursor: pointer; transition: transform 0.1s, opacity 0.2s; }
+.btn-calc { flex: 2; height: 44px; font-size: 14px; font-weight: 700; border: none; border-radius: 10px; background: var(--green); color: white; cursor: pointer; transition: transform 0.1s, opacity 0.2s; }
 .btn-calc:active { transform: scale(0.98); }
-.btn-reset { flex: 1; padding: 12px; font-size: 14px; font-weight: 700; border: none; border-radius: 10px; background: #fef2f2; color: var(--red); border: 1px solid #fecaca; cursor: pointer; transition: transform 0.1s; }
+.btn-reset { flex: 1; height: 44px; font-size: 14px; font-weight: 700; border: none; border-radius: 10px; background: #fef2f2; color: var(--red); border: 1px solid #fecaca; cursor: pointer; transition: transform 0.1s; }
 .btn-reset:active { transform: scale(0.98); }
 
 /* Navigation Tab Bar */
@@ -171,11 +191,11 @@ input:focus, select:focus {
   bottom: 0; 
   left: 0; 
   right: 0; 
-  background: rgba(255, 255, 255, 0.94); 
+  background: rgba(255, 255, 255, 0.96); 
   backdrop-filter: blur(12px); 
   border-top: 1px solid var(--card-border); 
   display: flex; 
-  padding: 8px 12px 14px 12px; 
+  padding: 8px 12px 20px 12px; 
   gap: 12px; 
   z-index: 100;
   max-width: 650px;
@@ -183,7 +203,8 @@ input:focus, select:focus {
 }
 .tab { 
   flex: 1; 
-  padding: 10px; 
+  height: 42px;
+  padding: 0 10px; 
   border: none; 
   background: transparent; 
   color: var(--text-muted); 
@@ -208,7 +229,7 @@ input:focus, select:focus {
 <main>
 <header class="top">
   <div class="top-icon">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
   </div>
   <div>
     <h1>AeroCalc / حاسبة الطائرات</h1>
