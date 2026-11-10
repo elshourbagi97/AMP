@@ -237,7 +237,7 @@ input:focus, select:focus {
     </div>
     <div class="field">
       <label for="weightFuelLitres">Fuel (L) / الوقود</label>
-      <input id="weightFuelLitres" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Total fuel">
+      <input id="weightFuelLitres" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Total fuel">
     </div>
     <div class="field">
       <label for="extra">Additional Item / حمولة إضافية</label>
@@ -293,15 +293,15 @@ input:focus, select:focus {
     <label style="margin-bottom:4px; display:block;">MANUAL STARTING POINT (POINT A)</label>
     <div class="coord-row">
       <div class="field"><label>Dir</label><select id="startLatHem"><option>N</option><option>S</option></select></div>
-      <div class="field"><label>Lat (°)</label><input id="startLatDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
-      <div class="field"><label>Min (′)</label><input id="startLatMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
-      <div class="field"><label>Sec (″)</label><input id="startLatSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
+      <div class="field"><label>Lat (°)</label><input id="startLatDeg" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Deg"></div>
+      <div class="field"><label>Min (′)</label><input id="startLatMin" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Min"></div>
+      <div class="field"><label>Sec (″)</label><input id="startLatSec" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Sec"></div>
     </div>
     <div class="coord-row">
       <div class="field"><label>Dir</label><select id="startLonHem"><option>E</option><option>W</option></select></div>
-      <div class="field"><label>Lon (°)</label><input id="startLonDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
-      <div class="field"><label>Min (′)</label><input id="startLonMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
-      <div class="field"><label>Sec (″)</label><input id="startLonSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
+      <div class="field"><label>Lon (°)</label><input id="startLonDeg" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Deg"></div>
+      <div class="field"><label>Min (′)</label><input id="startLonMin" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Min"></div>
+      <div class="field"><label>Sec (″)</label><input id="startLonSec" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Sec"></div>
     </div>
   </div>
 
@@ -309,15 +309,15 @@ input:focus, select:focus {
   <label style="margin-bottom:4px; display:block;">DESTINATION POINT (POINT B)</label>
   <div class="coord-row">
     <div class="field"><label>Dir</label><select id="targetLatHem"><option>N</option><option>S</option></select></div>
-    <div class="field"><label>Lat (°)</label><input id="targetLatDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
-    <div class="field"><label>Min (′)</label><input id="targetLatMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
-    <div class="field"><label>Sec (″)</label><input id="targetLatSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
+    <div class="field"><label>Lat (°)</label><input id="targetLatDeg" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Deg"></div>
+    <div class="field"><label>Min (′)</label><input id="targetLatMin" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Min"></div>
+    <div class="field"><label>Sec (″)</label><input id="targetLatSec" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Sec"></div>
   </div>
   <div class="coord-row">
     <div class="field"><label>Dir</label><select id="targetLonHem"><option>E</option><option>W</option></select></div>
-    <div class="field"><label>Lon (°)</label><input id="targetLonDeg" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Deg"></div>
-    <div class="field"><label>Min (′)</label><input id="targetLonMin" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Min"></div>
-    <div class="field"><label>Sec (″)</label><input id="targetLonSec" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Sec"></div>
+    <div class="field"><label>Lon (°)</label><input id="targetLonDeg" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Deg"></div>
+    <div class="field"><label>Min (′)</label><input id="targetLonMin" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Min"></div>
+    <div class="field"><label>Sec (″)</label><input id="targetLonSec" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Sec"></div>
   </div>
 
   <div style="margin: 10px 0;">
@@ -332,15 +332,15 @@ input:focus, select:focus {
     <div class="fuel-work-row">
       <div class="field">
         <label for="totalFuel">Avail. Fuel</label>
-        <input id="totalFuel" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="Total fuel">
+        <input id="totalFuel" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="Total fuel">
       </div>
       <div class="field">
         <label for="remainingFuel">Reserve Fuel</label>
-        <input id="remainingFuel" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="0">
+        <input id="remainingFuel" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="0">
       </div>
       <div class="field">
         <label for="workTime">Work Time</label>
-        <input id="workTime" type="number" inputmode="decimal" pattern="[0-9]*" step="any" min="0" placeholder="0">
+        <input id="workTime" type="text" inputmode="decimal" pattern="[0-9]*" placeholder="0">
       </div>
     </div>
   </div>
@@ -623,15 +623,6 @@ $("resetNav").onclick = () => {
 };
 
 $("calculateFlight").onclick = calcFlight;
-
-// Restrict non-numeric inputs via JS as backup
-document.querySelectorAll('input[type="number"]').forEach(input => {
-  input.addEventListener('keydown', (e) => {
-    if (['e', 'E', '+', '-'].includes(e.key)) {
-      e.preventDefault();
-    }
-  });
-});
 
 // Register Service Worker for Offline Support
 if ("serviceWorker" in navigator) {
