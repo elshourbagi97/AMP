@@ -301,6 +301,7 @@ select {
       <label for="navAirport">Starting Point (From) / نقطة البداية</label>
       <select id="navAirport">
         <option value="siwa">Siwa Airport / مطار سيوة</option>
+        <option value="siwaTown">Siwa Town / سيوة البلد</option>
         <option value="miliz">El Melliz Airport / مطار مليز</option>
         <option value="owainat">East Oweinat / مطار شرق العوينات</option>
         <option value="custom">Manual Coordinates / إحداثيات يدوية</option>
@@ -432,6 +433,7 @@ const aircraftWeights = {
 
 const airports = {
   siwa: { lat: 29 + 33/60 + 54.1/3600, lon: 25 + 35/60 + 58.3/3600, mtow: 1191, text: "N 29° 33′ 54.1″ · E 025° 35′ 58.3″" },
+  siwaTown: { lat: 29 + 12/60 + 20.45/3600, lon: 25 + 30/60 + 42.54/3600, text: "N 29° 12′ 20.45″ · E 025° 30′ 42.54″" },
   miliz: { lat: 30 + 25/60 + 10/3600, lon: 33 + 8/60 + 30/3600, mtow: 1183, text: "N 30° 25′ 10″ · E 033° 08′ 30″" },
   owainat: { lat: 22 + 35/60, lon: 28 + 42/60 + 58/3600, mtow: 1187, text: "N 22° 35′ 00″ · E 028° 42′ 58″" }
 };
